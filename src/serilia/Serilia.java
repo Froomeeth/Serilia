@@ -1,9 +1,9 @@
-package template;
+package serilia;
 
 import mindustry.mod.*;
-import template.gen.*;
+import serilia.gen.*;
 
-public class ModTemplate extends Mod{
+public class Serilia extends Mod{
     @Override
     public void loadContent(){
         EntityRegistry.register();
