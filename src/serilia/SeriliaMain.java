@@ -4,7 +4,7 @@ import mindustry.mod.*;
 import serilia.content.AndarvosBlocks;
 import serilia.gen.*;
 
-public class Serilia extends Mod{
+public class SeriliaMain extends Mod{
     @Override
     public void loadContent(){
         EntityRegistry.register();

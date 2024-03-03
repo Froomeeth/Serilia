@@ -5,5 +5,5 @@
     "minGameVersion": "146",
     "author": "You",
     "java": true,
-    "main": "serilia.Serilia"
+    "main": "serilia.SeriliaMain"
 }
