@@ -11,7 +11,7 @@ import mindustry.world.blocks.storage.CoreBlock;
 
 public class DrawCore extends CoreBlock{
     public float powerProduction = 0;
-    public Color[] glowColors = {Color.valueOf("00000000"), Color.red, Color.valueOf("ff000000"), Color.pink, Color.acid, Color.sky};
+    public Color[] glowColors = {Color.valueOf("00000000"), Color.coral, Color.valueOf("ff6161"), Color.pink, Color.acid, Color.sky};
     public TextureRegion glow;
     public float glowMag = 0.5f, glowScl = 10f;
 
