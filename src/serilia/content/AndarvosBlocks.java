@@ -1,6 +1,7 @@
 package serilia.content;
 
 import mindustry.content.UnitTypes;
+import mindustry.gen.Sounds;
 import mindustry.world.Block;
 import serilia.world.blocks.DrawCore;
 
@@ -42,6 +43,8 @@ public class AndarvosBlocks {
             thrusterLength = 34/4f;
 
             unitCapModifier = 15;
+            ambientSound = Sounds.electricHum;
+            ambientSoundVolume = 0.06f;
         }};
     }
 }

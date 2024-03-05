@@ -10,7 +10,15 @@ public class SeriliaMain extends Mod{
     public static String[] sploosh = {
             "Do 15% of a backflip!",
             "why is it always thinking",
-            "been"
+            "been",
+            ":)",
+            ":D",
+            "git gud",
+            "may be gluten free",
+            "pickle part",
+            "cordoba bossfight",
+            "THE GODS ARE AFRAID"
+
     };
 
     @Override
