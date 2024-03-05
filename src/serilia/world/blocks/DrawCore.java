@@ -11,7 +11,7 @@ import mindustry.world.blocks.storage.CoreBlock;
 
 public class DrawCore extends CoreBlock{
     public float powerProduction = 0;
-    public Color[] glowColors = {Color.valueOf("00000000"), Color.red, Color.red, Color.pink, Color.acid, Color.sky};
+    public Color[] glowColors = {Color.valueOf("00000000"), Color.red, Color.valueOf("ff000000"), Color.pink, Color.acid, Color.sky};
     public TextureRegion glow;
     public float glowMag = 0.5f, glowScl = 10f;
 
@@ -22,7 +22,6 @@ public class DrawCore extends CoreBlock{
     @Override
     public void load(){
         super.load();
-
         glow = Core.atlas.find(name + "-glow");
     }
 
@@ -32,7 +31,8 @@ public class DrawCore extends CoreBlock{
             return powerProduction;
         }
         @Override
-        public void draw(){super.draw();
+        public void draw(){
+            super.draw();
             Drawf.additive(glow, team.id < 6 ? glowColors[team.id] : glowColors[1], 1f - glowMag + Mathf.absin(Time.time, glowScl, glowMag), x, y, 0f, Layer.blockAdditive);
         }
     }

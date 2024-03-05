@@ -6,18 +6,18 @@ import serilia.world.blocks.DrawCore;
 
 import static mindustry.type.Category.*;
 import static mindustry.type.ItemStack.with;
-import static mindustry.world.meta.BuildVisibility.*;
 
 public class AndarvosBlocks {
     public static Block
-    coreSprout;
+    //effect
+    coreSprout, coreBurgeon, coreGreenhouse;
     public static void load() {
         //effect
         coreSprout = new DrawCore("core-sprout"){{
-            requirements(logic, sandboxOnly, with());
+            requirements(effect, with());
             alwaysUnlocked = true;
 
-            scaledHealth = 220;
+            scaledHealth = 225;
             armor = 1f;
             size = 4;
             itemCapacity = 1500;
@@ -28,6 +28,20 @@ public class AndarvosBlocks {
 
             unitCapModifier = 5;
         }};
+        coreBurgeon = new DrawCore("core-burgeon"){{
+            requirements(effect, with());
+            alwaysUnlocked = true;
 
+            scaledHealth = 250;
+            armor = 1f;
+            size = 5;
+            itemCapacity = 3000;
+
+            isFirstTier = false;
+            unitType = UnitTypes.incite;
+            thrusterLength = 34/4f;
+
+            unitCapModifier = 15;
+        }};
     }
 }
