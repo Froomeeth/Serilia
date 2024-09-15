@@ -1,20 +1,41 @@
 package serilia.content;
 
+import arc.graphics.Color;
 import mindustry.content.UnitTypes;
 import mindustry.gen.Sounds;
 import mindustry.world.Block;
-import serilia.world.blocks.DrawCore;
+import mindustry.world.blocks.power.BeamNode;
+import mindustry.world.blocks.production.BeamDrill;
+import serilia.world.blocks.GeneratorCore;
 
 import static mindustry.type.Category.*;
 import static mindustry.type.ItemStack.with;
 
 public class AndarvosBlocks {
     public static Block
+    //turrets
+    //production
+    //transport
+    //fluids
+    //power
+    reinforcedNode,
+    //defense
+    //crafting
+    //units
     //effect
-    coreSprout, coreBurgeon, coreGreenhouse;
+    coreSprout, coreBurgeon;
     public static void load() {
+        //power
+        reinforcedNode = new BeamNode("reinforced-node"){{
+            requirements(power, with());
+            health = 100;
+            size = 1;
+
+            consumePowerBuffered(500.0F);
+            range = 10;
+        }};
         //effect
-        coreSprout = new DrawCore("core-sprout"){{
+        coreSprout = new GeneratorCore("core-sprout"){{
             requirements(effect, with());
             alwaysUnlocked = true;
 
@@ -28,8 +49,15 @@ public class AndarvosBlocks {
             thrusterLength = 34/4f;
 
             unitCapModifier = 5;
+            ambientSound = Sounds.electricHum;
+            ambientSoundVolume = 0.06f;
+
+            outputsPower = true;
+            consumesPower = false;
+            powerProduction = 400/60f;
         }};
-        coreBurgeon = new DrawCore("core-burgeon"){{
+        coreBurgeon = new GeneratorCore("core-burgeon"){{
+            details = "cucumber unit seelction";
             requirements(effect, with());
             alwaysUnlocked = true;
 
@@ -44,7 +72,11 @@ public class AndarvosBlocks {
 
             unitCapModifier = 15;
             ambientSound = Sounds.electricHum;
-            ambientSoundVolume = 0.06f;
+            ambientSoundVolume = 0.08f;
+
+            outputsPower = true;
+            consumesPower = false;
+            powerProduction = 1000/60f;
         }};
     }
 }
