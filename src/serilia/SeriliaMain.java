@@ -25,8 +25,8 @@ public class SeriliaMain extends Mod{
     @Override
     public void loadContent(){
         EntityRegistry.register();
-        AndarvosBlocks.load();
         AndarvosUnitType.load();
+        AndarvosBlocks.load();
 
         Vars.mods.getMod("serilia").meta.subtitle = sploosh[Mathf.random(sploosh.length - 1)];
     }

@@ -1,5 +1,6 @@
 package serilia.content;
 
+import arc.graphics.Color;
 import mindustry.entities.bullet.MissileBulletType;
 import mindustry.gen.Sounds;
 import mindustry.gen.UnitEntity;
@@ -90,8 +91,11 @@ public class AndarvosUnitType {
                 mineTier = 1;
                 mineSpeed = 8.5f;
 
-                engineSize = 3;
+                engineSize = 3.4f;
+                engineOffset = 14;
+                setEnginesMirror(new UnitType.UnitEngine[]{new UnitType.UnitEngine(12.25F, -9.25F, 3F, 315.0F)});
                 trailLength = 30;
+                outlineColor = Color.valueOf("313236");
                 weapons.add(new Weapon() {{
                     x = 3f;
                     y = 0f;

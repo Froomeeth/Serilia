@@ -4,18 +4,21 @@ import arc.graphics.Color;
 import mindustry.content.UnitTypes;
 import mindustry.gen.Sounds;
 import mindustry.world.Block;
+import mindustry.world.blocks.distribution.Duct;
 import mindustry.world.blocks.power.BeamNode;
 import mindustry.world.blocks.production.BeamDrill;
 import serilia.world.blocks.GeneratorCore;
 
 import static mindustry.type.Category.*;
 import static mindustry.type.ItemStack.with;
+import static serilia.content.AndarvosUnitType.graft;
 
 public class AndarvosBlocks {
     public static Block
     //turrets
     //production
-    //transport
+    //distribution
+    heavyDuct,
     //fluids
     //power
     reinforcedNode,
@@ -25,14 +28,26 @@ public class AndarvosBlocks {
     //effect
     coreSprout, coreBurgeon;
     public static void load() {
+        //distribution
+        heavyDuct = new Duct("heavy-duct"){{
+            details = "straight line";
+            requirements(distribution, with());
+            health = 100;
+            size = 1;
+
+            armored = true;
+        }};
         //power
         reinforcedNode = new BeamNode("reinforced-node"){{
+            details = "just like factorio";
             requirements(power, with());
             health = 100;
             size = 1;
 
             consumePowerBuffered(500.0F);
             range = 10;
+            outputsPower = true;
+            consumesPower = false;
         }};
         //effect
         coreSprout = new GeneratorCore("core-sprout"){{
@@ -57,7 +72,7 @@ public class AndarvosBlocks {
             powerProduction = 400/60f;
         }};
         coreBurgeon = new GeneratorCore("core-burgeon"){{
-            details = "cucumber unit seelction";
+            details = "cucumber unit selection";
             requirements(effect, with());
             alwaysUnlocked = true;
 
@@ -67,7 +82,7 @@ public class AndarvosBlocks {
             itemCapacity = 3000;
 
             isFirstTier = false;
-            unitType = UnitTypes.incite;
+            unitType = graft;
             thrusterLength = 34/4f;
 
             unitCapModifier = 15;
