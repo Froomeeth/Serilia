@@ -1,13 +1,12 @@
 package serilia.content;
 
 import arc.graphics.Color;
+import mindustry.content.StatusEffects;
 import mindustry.entities.bullet.BasicBulletType;
-import mindustry.entities.bullet.BulletType;
 import mindustry.entities.bullet.MissileBulletType;
 import mindustry.gen.Sounds;
 import mindustry.gen.UnitEntity;
 import mindustry.graphics.Layer;
-import mindustry.graphics.Pal;
 import mindustry.type.UnitType;
 import mindustry.type.Weapon;
 
@@ -111,8 +110,10 @@ public class AndarvosUnitType {
                     reload = 8f;
 
                     shootSound = Sounds.bolt;
+                    shootStatus = StatusEffects.slow;
+                    shootStatusDuration = 32;
 
-                    bullet = new MissileBulletType() {{
+                    bullet = new BasicBulletType() {{
                         width = 5f;
                         height = 35f;
 
