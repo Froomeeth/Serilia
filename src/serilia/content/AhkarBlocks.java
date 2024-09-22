@@ -24,7 +24,7 @@ public class AhkarBlocks{
             size = 5;
         }};
 
-        transporterIn = new PayloadBridgeOut("transporter-in"){{
+        transporterIn = new PayloadBridgeIn("transporter-in"){{
             requirements(distribution, with());
             size = 5;
         }};
