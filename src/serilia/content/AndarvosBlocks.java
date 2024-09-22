@@ -1,24 +1,27 @@
 package serilia.content;
 
 import arc.graphics.Color;
-import mindustry.content.UnitTypes;
+import mindustry.content.Fx;
+import mindustry.entities.effect.MultiEffect;
+import mindustry.entities.effect.ParticleEffect;
 import mindustry.gen.Sounds;
 import mindustry.world.Block;
 import mindustry.world.blocks.distribution.Duct;
 import mindustry.world.blocks.power.BeamNode;
-import mindustry.world.blocks.production.BeamDrill;
+import mindustry.world.blocks.production.GenericCrafter;
 import serilia.world.blocks.GeneratorCore;
+import serilia.world.blocks.transport.DuctNode;
+import serilia.world.blocks.transport.HeavyDuct;
 
 import static mindustry.type.Category.*;
 import static mindustry.type.ItemStack.with;
-import static serilia.content.AndarvosUnitType.graft;
 
 public class AndarvosBlocks {
     public static Block
     //turrets
     //production
     //distribution
-    heavyDuct,
+    heavyDuct, ductNode,
     //fluids
     //power
     reinforcedNode,
@@ -26,16 +29,22 @@ public class AndarvosBlocks {
     //crafting
     //units
     //effect
+    //misc
+    fireflyNest,
     coreSprout, coreBurgeon;
     public static void load() {
         //distribution
-        heavyDuct = new Duct("heavy-duct"){{
-            details = "straight line";
+        heavyDuct = new HeavyDuct("heavy-duct"){{
             requirements(distribution, with());
             health = 100;
             size = 1;
 
             armored = true;
+        }};
+        ductNode = new DuctNode("duct-node"){{
+            requirements(distribution, with());
+            health = 100;
+            size = 1;
         }};
         //power
         reinforcedNode = new BeamNode("reinforced-node"){{
@@ -60,7 +69,7 @@ public class AndarvosBlocks {
             itemCapacity = 1500;
 
             isFirstTier = true;
-            unitType = UnitTypes.evoke;
+            unitType = AndarvosUnitType.scion;
             thrusterLength = 34/4f;
 
             unitCapModifier = 5;
@@ -69,10 +78,10 @@ public class AndarvosBlocks {
 
             outputsPower = true;
             consumesPower = false;
-            powerProduction = 400/60f;
+            powerProduction = 500/60f;
         }};
         coreBurgeon = new GeneratorCore("core-burgeon"){{
-            details = "cucumber unit selection";
+            details = "shoot where want, shit out unit";
             requirements(effect, with());
             alwaysUnlocked = true;
 
@@ -82,7 +91,7 @@ public class AndarvosBlocks {
             itemCapacity = 3000;
 
             isFirstTier = false;
-            unitType = graft;
+            unitType = AndarvosUnitType.graft;
             thrusterLength = 34/4f;
 
             unitCapModifier = 15;
@@ -92,6 +101,22 @@ public class AndarvosBlocks {
             outputsPower = true;
             consumesPower = false;
             powerProduction = 1000/60f;
+        }};
+        //misc
+        fireflyNest = new GenericCrafter("firefly-nest"){{
+            alwaysUnlocked = true;
+            requirements(effect, with());
+            craftTime = 1;
+            craftEffect = new MultiEffect(
+                    new ParticleEffect(){{
+                        sizeFrom = 3;
+                        sizeTo = 0;
+                        length = 60;
+                        colorFrom = Color.valueOf("75eb4d");
+                        colorTo = Color.valueOf("75eb4d");
+                        cone = 360f;
+                        particles = 1;
+                    }});
         }};
     }
 }

@@ -5,6 +5,7 @@ import arc.func.Func;
 import arc.graphics.Color;
 import arc.graphics.g2d.TextureRegion;
 import arc.math.Mathf;
+import arc.util.Strings;
 import arc.util.Time;
 import mindustry.core.UI;
 import mindustry.gen.Building;
@@ -23,6 +24,7 @@ public class GeneratorCore extends CoreBlock{
     public GeneratorCore(String name){
         super(name);
         hasPower = true;
+        outputsPower = true;
     }
 
     @Override
@@ -33,26 +35,25 @@ public class GeneratorCore extends CoreBlock{
     }
     @Override
     public void setBars(){
-            super.setBars();
-                addBar("power", makePowerBalance());
-                addBar("batteries", makeBatteryBalance());
+        super.setBars();
+        addBar("poweroutput", (GeneratorCoreBuild entity) -> {
+            return new Bar(() -> {
+                return Core.bundle.format("bar.poweroutput", Strings.fixed(powerProduction * 60 + 0.0001f, 1));
+            }, () -> {
+                return Pal.powerBar;
+            }, () -> {
+                return 1f;
+            });
+        });
+        addBar("power", makePowerBalance());
     }
 
     public static Func<Building, Bar> makePowerBalance(){
         return entity -> new Bar(() ->
                 Core.bundle.format("bar.powerbalance",
-                        ((entity.power.graph.getPowerBalance() >= 0 ? "+" : "") + UI.formatAmount((long)(entity.power.graph.getPowerBalance() * 60)))),
+                        ((entity.power.graph.getPowerBalance() >= 0 ? "+" : "") + UI.formatAmount((long)(entity.power.graph.getPowerBalance() * 60 + 0.0001f)))),
                 () -> Pal.powerBar,
                 () -> Mathf.clamp(entity.power.graph.getLastPowerProduced() / entity.power.graph.getLastPowerNeeded())
-        );
-    }
-
-    public static Func<Building, Bar> makeBatteryBalance(){
-        return entity -> new Bar(() ->
-                Core.bundle.format("bar.powerstored",
-                        (UI.formatAmount((long)entity.power.graph.getLastPowerStored())), UI.formatAmount((long)entity.power.graph.getLastCapacity())),
-                () -> Pal.powerBar,
-                () -> Mathf.clamp(entity.power.graph.getLastPowerStored() / entity.power.graph.getLastCapacity())
         );
     }
 

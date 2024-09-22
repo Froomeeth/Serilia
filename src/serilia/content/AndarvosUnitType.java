@@ -38,7 +38,8 @@ public class AndarvosUnitType {
                 mineSpeed = 8.5f;
 
                 engineSize = 3;
-                trailLength = 30;
+                trailLength = 25;
+                outlineColor = Color.valueOf("313236");
                 weapons.add(new Weapon() {{
                     x = 3f;
                     y = 0f;
@@ -117,16 +118,16 @@ public class AndarvosUnitType {
                         width = 5f;
                         height = 35f;
 
-                        speed = 2f;
+                        speed = 8f;
                         lifetime = 40f;
                         damage = 23;
-                        drag = -0.05f;
 
                         trailWidth = 1;
                         trailLength = 20;
                         buildingDamageMultiplier = 0;
 
                         homingPower = 0.02f;
+                        homingDelay = 35;
                         homingRange = 1;
                     }};
                 }});
