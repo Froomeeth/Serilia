@@ -2,8 +2,6 @@ import arc.files.*
 import arc.util.*
 import arc.util.serialization.Jval
 
-import java.util.regex.*
-
 buildscript{
     dependencies{
         classpath "com.github.Anuken.Arc:arc-core:$arcVersion"
