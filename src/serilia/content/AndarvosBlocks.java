@@ -1,12 +1,10 @@
 package serilia.content;
 
 import arc.graphics.Color;
-import mindustry.content.Fx;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.ParticleEffect;
 import mindustry.gen.Sounds;
 import mindustry.world.Block;
-import mindustry.world.blocks.distribution.Duct;
 import mindustry.world.blocks.power.BeamNode;
 import mindustry.world.blocks.production.GenericCrafter;
 import serilia.world.blocks.GeneratorCore;
@@ -29,9 +27,9 @@ public class AndarvosBlocks {
     //crafting
     //units
     //effect
+    coreSprout, coreBurgeon,
     //misc
-    fireflyNest,
-    coreSprout, coreBurgeon;
+    fireflyNest;
     public static void load() {
         //distribution
         heavyDuct = new HeavyDuct("heavy-duct"){{
