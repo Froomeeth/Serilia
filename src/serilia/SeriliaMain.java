@@ -3,7 +3,7 @@ package serilia;
 import arc.math.Mathf;
 import mindustry.Vars;
 import mindustry.mod.*;
-import serilia.content.AhkarBlocks;
+import serilia.content.OrbitBlocks;
 import serilia.content.AndarvosBlocks;
 import serilia.content.AndarvosUnitType;
 import serilia.gen.*;
@@ -28,7 +28,7 @@ public class SeriliaMain extends Mod{
         EntityRegistry.register();
         AndarvosUnitType.load();
         AndarvosBlocks.load();
-        AhkarBlocks.load();
+        OrbitBlocks.load();
 
         Vars.mods.getMod("serilia").meta.subtitle = sploosh[Mathf.random(sploosh.length - 1)];
     }
