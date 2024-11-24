@@ -1,17 +1,12 @@
 package serilia.content;
 
-import arc.graphics.Color;
 import mindustry.content.Fx;
-import mindustry.content.Liquids;
-import mindustry.entities.effect.MultiEffect;
-import mindustry.entities.effect.ParticleEffect;
 import mindustry.gen.Sounds;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.production.BurstDrill;
-import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Pump;
 import serilia.world.blocks.GeneratorCore;
 import serilia.world.blocks.transport.DuctNode;
@@ -34,14 +29,14 @@ public class AndarvosBlocks {
     //crafting
     //units
     //effect
-    coreSprout, coreBurgeon,
+    coreSprout, coreBurgeon;
     //misc
-    fireflyNest;
     public static void load() {
         //production
         combustionDrill = new BurstDrill("combustion-drill") {{
             scaledHealth = 120;
             size = 2;
+            buildCostMultiplier = 3;
             requirements(Category.production, ItemStack.with(SeriliaResources.debris, 20));
 
             liquidCapacity = 10;
@@ -128,20 +123,5 @@ public class AndarvosBlocks {
             powerProduction = 1000/60f;
         }};
         //misc
-        fireflyNest = new GenericCrafter("firefly-nest"){{
-            alwaysUnlocked = true;
-            requirements(effect, with());
-            craftTime = 1;
-            craftEffect = new MultiEffect(
-                    new ParticleEffect(){{
-                        sizeFrom = 3;
-                        sizeTo = 0;
-                        length = 60;
-                        colorFrom = Color.valueOf("75eb4d");
-                        colorTo = Color.valueOf("75eb4d");
-                        cone = 360f;
-                        particles = 1;
-                    }});
-        }};
     }
 }

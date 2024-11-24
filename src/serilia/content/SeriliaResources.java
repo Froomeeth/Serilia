@@ -22,7 +22,7 @@ public class SeriliaResources {
         }};
         iridium = new Item("iridium", Color.valueOf("656e83")) {{
             hardness = 3;
-            cost = 1.2f;
+            cost = 1.5f;
             alwaysUnlocked = true;
         }};
         //Liquids-------------------------------------------------------------------------------------------------------
