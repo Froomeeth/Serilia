@@ -1,12 +1,18 @@
 package serilia.content;
 
 import arc.graphics.Color;
+import mindustry.content.Fx;
+import mindustry.content.Liquids;
 import mindustry.entities.effect.MultiEffect;
 import mindustry.entities.effect.ParticleEffect;
 import mindustry.gen.Sounds;
+import mindustry.type.Category;
+import mindustry.type.ItemStack;
+import mindustry.type.LiquidStack;
 import mindustry.world.Block;
-import mindustry.world.blocks.power.BeamNode;
+import mindustry.world.blocks.production.BurstDrill;
 import mindustry.world.blocks.production.GenericCrafter;
+import mindustry.world.blocks.production.Pump;
 import serilia.world.blocks.GeneratorCore;
 import serilia.world.blocks.transport.DuctNode;
 import serilia.world.blocks.transport.HeavyDuct;
@@ -18,11 +24,12 @@ public class AndarvosBlocks {
     public static Block
     //turrets
     //production
+            combustionDrill,
     //distribution
     heavyDuct, ductNode,
     //fluids
+    thermalPump,
     //power
-    reinforcedNode,
     //defense
     //crafting
     //units
@@ -31,31 +38,51 @@ public class AndarvosBlocks {
     //misc
     fireflyNest;
     public static void load() {
+        //production
+        combustionDrill = new BurstDrill("combustion-drill") {{
+            scaledHealth = 120;
+            size = 2;
+            requirements(Category.production, ItemStack.with(SeriliaResources.debris, 20));
+
+            liquidCapacity = 10;
+            itemCapacity = 20;
+
+            hasPower = false;
+            consumeLiquids(LiquidStack.with(new Object[]{SeriliaResources.methane, 5/60F}));
+
+            tier = 1;
+            drillTime = 500;
+
+            drillEffect = Fx.blastExplosion;
+            shake = 0.5f;
+            arrowOffset = 0;
+            arrowSpacing = 0;
+            arrows = 1;
+            }};
         //distribution
         heavyDuct = new HeavyDuct("heavy-duct"){{
-            requirements(distribution, with());
+            requirements(distribution, with(SeriliaResources.debris, 1));
             health = 100;
             size = 1;
 
             armored = true;
         }};
         ductNode = new DuctNode("duct-node"){{
-            requirements(distribution, with());
+            requirements(distribution, with(SeriliaResources.debris, 3));
             health = 100;
             size = 1;
+        }};
+        //fluids
+        thermalPump = new Pump("thermal-pump"){{
+            requirements(liquid, with(SeriliaResources.debris, 50));
+            health = 360;
+            size = 2;
+            liquidCapacity = 100;
+            pumpAmount = 12.5f/60f;
+
+            squareSprite = false;
         }};
         //power
-        reinforcedNode = new BeamNode("reinforced-node"){{
-            details = "just like factorio";
-            requirements(power, with());
-            health = 100;
-            size = 1;
-
-            consumePowerBuffered(500.0F);
-            range = 10;
-            outputsPower = true;
-            consumesPower = false;
-        }};
         //effect
         coreSprout = new GeneratorCore("core-sprout"){{
             requirements(effect, with());

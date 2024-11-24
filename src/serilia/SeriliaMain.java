@@ -3,9 +3,7 @@ package serilia;
 import arc.math.Mathf;
 import mindustry.Vars;
 import mindustry.mod.*;
-import serilia.content.OrbitBlocks;
-import serilia.content.AndarvosBlocks;
-import serilia.content.AndarvosUnitType;
+import serilia.content.*;
 import serilia.gen.*;
 
 public class SeriliaMain extends Mod{
@@ -26,7 +24,10 @@ public class SeriliaMain extends Mod{
     @Override
     public void loadContent(){
         EntityRegistry.register();
+        SeriliaResources.load();
+        SeriliaEnvBlocks.load();
         AndarvosUnitType.load();
+        EnemyUnits.load();
         AndarvosBlocks.load();
         OrbitBlocks.load();
 
