@@ -18,7 +18,8 @@ public class SeriliaMain extends Mod{
             "pickle part",
             "cordoba bossfight",
             "beeblebum",
-            "THE GODS ARE AFRAID"
+            "THE GODS ARE AFRAID",
+            "moss damage"
     };
 
     @Override

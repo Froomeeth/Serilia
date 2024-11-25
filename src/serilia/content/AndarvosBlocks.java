@@ -1,13 +1,17 @@
 package serilia.content;
 
 import mindustry.content.Fx;
+import mindustry.content.Items;
+import mindustry.content.Liquids;
 import mindustry.gen.Sounds;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
 import mindustry.type.LiquidStack;
 import mindustry.world.Block;
 import mindustry.world.blocks.production.BurstDrill;
+import mindustry.world.blocks.production.GenericCrafter;
 import mindustry.world.blocks.production.Pump;
+import mindustry.world.draw.*;
 import serilia.world.blocks.GeneratorCore;
 import serilia.world.blocks.transport.DuctNode;
 import serilia.world.blocks.transport.HeavyDuct;
@@ -27,6 +31,7 @@ public class AndarvosBlocks {
     //power
     //defense
     //crafting
+    castingBasin,
     //units
     //effect
     coreSprout, coreBurgeon;
@@ -78,6 +83,24 @@ public class AndarvosBlocks {
             squareSprite = false;
         }};
         //power
+        //Crafting------------------------------------------------------------------------------------------------------
+        castingBasin = new GenericCrafter("casting-basin"){{
+            scaledHealth = 120;
+            size = 3;
+
+            buildCostMultiplier = 1.3f;
+            requirements(crafting, with(SeriliaResources.remnants, 70));
+
+            liquidCapacity = 50;
+            itemCapacity = 20;
+
+            hasPower = false;
+            consumeLiquids(LiquidStack.with(new Object[]{Liquids.slag, 25/60F}));
+            outputItem = new ItemStack(Items.graphite, 10);
+            craftTime = 250;
+
+            drawer = new DrawMulti(new DrawBlock[]{new DrawRegion("-bottom"), new DrawLiquidTile(), new DrawDefault()});
+        }};
         //effect
         coreSprout = new GeneratorCore("core-sprout"){{
             requirements(effect, with());
