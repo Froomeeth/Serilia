@@ -37,7 +37,7 @@ public class AndarvosBlocks {
             scaledHealth = 120;
             size = 2;
             buildCostMultiplier = 3;
-            requirements(Category.production, ItemStack.with(SeriliaResources.debris, 20));
+            requirements(Category.production, ItemStack.with(SeriliaResources.remnants, 20));
 
             liquidCapacity = 10;
             itemCapacity = 20;
@@ -56,20 +56,20 @@ public class AndarvosBlocks {
             }};
         //distribution
         heavyDuct = new HeavyDuct("heavy-duct"){{
-            requirements(distribution, with(SeriliaResources.debris, 1));
+            requirements(distribution, with(SeriliaResources.remnants, 1));
             health = 100;
             size = 1;
 
             armored = true;
         }};
         ductNode = new DuctNode("duct-node"){{
-            requirements(distribution, with(SeriliaResources.debris, 3));
+            requirements(distribution, with(SeriliaResources.remnants, 3));
             health = 100;
             size = 1;
         }};
         //fluids
         thermalPump = new Pump("thermal-pump"){{
-            requirements(liquid, with(SeriliaResources.debris, 50));
+            requirements(liquid, with(SeriliaResources.remnants, 50));
             health = 360;
             size = 2;
             liquidCapacity = 100;

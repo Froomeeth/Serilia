@@ -1,12 +1,13 @@
 package serilia.content;
 
 import arc.graphics.Color;
+import mindustry.type.CellLiquid;
 import mindustry.type.Item;
 import mindustry.type.Liquid;
 
 public class SeriliaResources {
     public static Item
-        debris,
+            remnants,
     //Andarvos
         iridium;
     //Ahkar
@@ -15,7 +16,7 @@ public class SeriliaResources {
 
     public static void load() {
         //Items---------------------------------------------------------------------------------------------------------
-        debris = new Item("debris", Color.valueOf("595365")) {{
+        remnants = new Item("remnants", Color.valueOf("595365")) {{
             hardness = 1;
             cost = 1f;
             alwaysUnlocked = true;
@@ -30,6 +31,20 @@ public class SeriliaResources {
                 gas = true;
                 explosiveness = 1;
                 flammability = 3;
+            }};
+        plantMatter = new CellLiquid("plant-matter", Color.valueOf("3b4935")) {{
+                heatCapacity = 0;
+                temperature = 0.5f;
+                viscosity = 0.9f;
+                flammability = 0;
+                capPuddles = false;
+                spreadTarget = SeriliaResources.plantMatter;
+                moveThroughBlocks = true;
+                incinerable = true;
+                blockReactive = false;
+                canStayOn.addAll(new Liquid[]{SeriliaResources.plantMatter});
+                colorFrom = Color.valueOf("3b4935");
+                colorTo = Color.valueOf("55693c");
             }};
     }
 }

@@ -18,7 +18,7 @@ public class SeriliaEnvBlocks {
         oreIridium = new OreBlock(SeriliaResources.iridium) {{
             variants = 4;
         }};
-        oreDebris = new OreBlock(SeriliaResources.debris) {{
+        oreDebris = new OreBlock(SeriliaResources.remnants) {{
             variants = 3;
         }};
         moss = new Floor("moss") {{
