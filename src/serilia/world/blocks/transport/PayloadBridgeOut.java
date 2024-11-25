@@ -1,6 +1,8 @@
 package serilia.world.blocks.transport;
 
 import arc.graphics.g2d.Draw;
+import arc.graphics.g2d.Lines;
+import arc.math.Mathf;
 import arc.math.geom.Position;
 import arc.math.geom.Vec2;
 import arc.util.Tmp;
@@ -63,13 +65,22 @@ public class PayloadBridgeOut extends PayloadBlock{
             float countSeg = 0f, countGap = line.gaps.get(0);
             Vec2 p = Tmp.v1.set(this);
             Vec2 v = Tmp.v2.set(1f, 1f);
+            Vec2 last = Tmp.v3.set(this);
             int j = 0;
 
 
             for(int i = 0 ; i < line.segLenRot.size; i += 2){ //for(int i = line.segLenRot.size - 2 ; i > 0; i -= 2){
                 countSeg += line.segLenRot.get(i);
                 v.setAngle(line.segLenRot.get(i + 1));
-                 p.add(v.setLength(line.segLenRot.get(i)));
+                p.add(v.setLength(line.segLenRot.get(i)));
+
+                Draw.z(100);
+                Mathf.rand.setSeed(i);
+                Lines.stroke(4, Tmp.c1.rand());
+                Lines.line(last.x, last.y, p.x, p.y);
+                last = p;
+                Draw.z(35);
+
 
                 Draw.z(Layer.flyingUnitLow);
                 while(j < line.gaps.size && countGap - line.sizes.get(j)/2 <= countSeg){

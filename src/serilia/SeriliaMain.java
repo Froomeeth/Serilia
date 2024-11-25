@@ -31,6 +31,8 @@ public class SeriliaMain extends Mod{
         EnemyUnits.load();
         AndarvosBlocks.load();
         OrbitBlocks.load();
+        SeriliaPlanets.load();
+        SeriliaSectors.load();
 
         Vars.mods.getMod("serilia").meta.subtitle = sploosh[Mathf.random(sploosh.length - 1)];
     }

@@ -7,12 +7,16 @@ import mindustry.type.Liquid;
 
 public class SeriliaResources {
     public static Item
-            remnants,
+        remnants,
     //Andarvos
         iridium;
     //Ahkar
-    public static Liquid
-        methane, chlorine, plantMatter, biofuel;
+
+
+    public static Item[] andarvos = {remnants, iridium};
+    public static Item[] orbit = {};
+
+    public static Liquid methane, chlorine, plantMatter, biofuel;
 
     public static void load() {
         //Items---------------------------------------------------------------------------------------------------------

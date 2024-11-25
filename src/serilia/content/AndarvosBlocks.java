@@ -38,7 +38,7 @@ public class AndarvosBlocks {
     //misc
     public static void load() {
         //production
-        combustionDrill = new BurstDrill("combustion-drill") {{
+        combustionDrill = new BurstDrill("combustion-drill"){{
             scaledHealth = 120;
             size = 2;
             buildCostMultiplier = 3;
@@ -48,7 +48,7 @@ public class AndarvosBlocks {
             itemCapacity = 20;
 
             hasPower = false;
-            consumeLiquids(LiquidStack.with(new Object[]{SeriliaResources.methane, 5/60F}));
+            consumeLiquids(LiquidStack.with(SeriliaResources.methane, 5/60F));
 
             tier = 1;
             drillTime = 500;
